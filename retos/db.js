@@ -157,11 +157,161 @@ async function main() {
         // console.log("Dato actualizado");
         // console.log(result);
 
-        // let sql = "SELECT COUNT(*) FROM students";
 
-        // let [result] = await conn.query(sql);
-        // console.log("Datos obtendos");
-        // console.log(result);
+
+
+        // Retos dia2
+
+        let params = ["1"];
+        let sql = "SELECT AVG(mark) FROM marks WHERE subject_id = ?";
+        conn.query(sql, params, function (err, result) {
+            if (err)
+                console.log(err);
+            else {
+                console.log("Datos obtendos");
+                console.log(result);
+            }   
+        });
+
+        // let sql = "SELECT COUNT(*) FROM students";
+        // conn.query(sql, function (err, result) {
+        //     if (err)
+        //         console.log(err);
+        //     else {
+        //         console.log("Datos obtendos");
+        //         console.log(result);
+        //     }
+        // });
+
+        // let sql = "SELECT * FROM `groups`";
+        // conn.query(sql, function (err, result) {
+        //     if (err)
+        //         console.log(err);
+        //     else {
+        //         console.log("Datos obtendos");
+        //         console.log(result);
+        //     }
+        // });
+
+        // let params = ["5", "1"];
+        // let sql = "DELETE FROM marks WHERE mark > ? AND YEAR(date) = YEAR(CURDATE()) - ?";
+        // await conn.query(sql, params, function (err, result) {
+        //     if (err)
+        //         console.log(err);
+        //     else {
+        //         console.log("Datos obtendos");
+        //         console.log(result);
+        //     }
+        // });
+
+        // let sql = "ALTER TABLE students ADD COLUMN enrollment_year INT";
+        // conn.query(sql, function (err, result) {
+        //     if (err)
+        //         console.log(err);
+        //     else {
+        //         console.log("Datos obtendos");
+        //         console.log(result);
+        //     }
+        // });
+
+        // let sql = "SELECT * FROM students WHERE enrollment_year = YEAR(CURDATE())";
+        // conn.query(sql, function (err, result) {
+        //     if (err)
+        //         console.log(err);
+        //     else {
+        //         console.log("Datos obtendos");
+        //         console.log(result);
+        //     }
+        // });
+
+        // let sql = `SELECT subject_id, COUNT(teacher_id) AS num_teahchers 
+        //             FROM subject_teacher GROUP BY subject_id`;
+        // conn.query(sql, function (err, result) {
+        //     if (err)
+        //         console.log(err);
+        //     else {
+        //         console.log("Datos obtendos");
+        //         console.log(result);
+        //     }
+        // });
+
+        // let params = ["1", "20", "8", "2022"];
+        // let sql = `SELECT student_id, mark FROM marks
+        //             WHERE (student_id >= ? AND student_id <= ?)
+        //             OR (mark > ? AND YEAR(date) = ?)`;
+        // await conn.query(sql, params, function (err, result) {
+        //     if (err)
+        //         console.log(err);
+        //     else {
+        //         console.log("Datos obtendos");
+        //         console.log(result);
+        //     }
+        // });
+
+        // let sql = `SELECT subject_id, AVG(mark) AS average_mark FROM marks WHERE YEAR(date) = YEAR(CURDATE()) 
+        //             GROUP BY subject_id`;
+        // conn.query(sql, function (err, result) {
+        //     if (err)
+        //         console.log(err);
+        //     else {
+        //         console.log("Datos obtendos");
+        //         console.log(result);
+        //     }
+        // });
+
+        // let sql = `SELECT student_id, AVG(mark) AS average_mark FROM marks WHERE YEAR(date) = YEAR(CURDATE()) 
+        //             GROUP BY student_id`;
+        // conn.query(sql, function (err, result) {
+        //     if (err)
+        //         console.log(err);
+        //     else {
+        //         console.log("Datos obtendos");
+        //         console.log(result);
+        //     }
+        // });
+
+        // let sql = `SELECT first_name, last_name, title FROM students AS s 
+        //             JOIN marks AS m ON (s.student_id = m.student_id)
+        //             JOIN subjects AS ss ON(m.subject_id = ss.subject_id)`;
+        // conn.query(sql, function (err, result) {
+        //     if (err)
+        //         console.log(err);
+        //     else {
+        //         console.log("Datos obtendos");
+        //         console.log(result);
+        //     }
+        // });
+
+        // let sql = `SELECT first_name, last_name, title FROM teachers AS t 
+        //             JOIN subject_teacher AS st ON (t.teacher_id = st.teacher_id)
+        //             JOIN subjects AS s ON(st.subject_id = s.subject_id)`;
+        // conn.query(sql, function (err, result) {
+        //     if (err)
+        //         console.log(err);
+        //     else {
+        //         console.log("Datos obtendos");
+        //         console.log(result);
+        //     }
+        // });
+
+        // let sql = `SELECT s.title AS subject_title,
+        //             COUNT(ss.student_id) AS total_students,
+        //             t.first_name AS teacher_first_name,
+        //             t.last_name AS teacher_last_name
+        //             FROM subjects AS s
+        //             JOIN subject_teacher AS st  ON s.subject_id = st.subject_id
+        //             JOIN teachers AS t ON st.teacher_id = t.teacher_id
+        //             LEFT JOIN marks AS m ON s.subject_id = m.subject_id
+        //             LEFT JOIN students AS ss ON m.student_id = ss.student_id
+        //             GROUP BY s.subject_id, t.teacher_id;`;
+        // conn.query(sql, function (err, result) {
+        //     if (err)
+        //         console.log(err);
+        //     else {
+        //         console.log("Datos obtendos");
+        //         console.log(result);
+        //     }
+        // });
 
     } catch (err) {
         console.log(err);
