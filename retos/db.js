@@ -162,16 +162,16 @@ async function main() {
 
         // Retos dia2
 
-        let params = ["1"];
-        let sql = "SELECT AVG(mark) FROM marks WHERE subject_id = ?";
-        conn.query(sql, params, function (err, result) {
-            if (err)
-                console.log(err);
-            else {
-                console.log("Datos obtendos");
-                console.log(result);
-            }   
-        });
+        // let params = ["1"];
+        // let sql = "SELECT AVG(mark) FROM marks WHERE subject_id = ?";
+        // conn.query(sql, params, function (err, result) {
+        //     if (err)
+        //         console.log(err);
+        //     else {
+        //         console.log("Datos obtendos");
+        //         console.log(result);
+        //     }   
+        // });
 
         // let sql = "SELECT COUNT(*) FROM students";
         // conn.query(sql, function (err, result) {
@@ -270,9 +270,14 @@ async function main() {
         //     }
         // });
 
-        // let sql = `SELECT first_name, last_name, title FROM students AS s 
-        //             JOIN marks AS m ON (s.student_id = m.student_id)
-        //             JOIN subjects AS ss ON(m.subject_id = ss.subject_id)`;
+        // Obtén los nombres y apellidos de los alumnos y los nombres de las asignaturas 
+        // en las que están apuntados.
+
+        // let sql = `SELECT first_name, last_name, title 
+        //             FROM students AS s 
+        //             JOIN \`groups\` AS g ON (s.group_id = g.group_id) 
+        //             JOIN subject_teacher AS st ON (g.group_id = st.group_id) 
+        //             JOIN subjects AS sb ON (st.subject_id = sb.subject_id)`;
         // conn.query(sql, function (err, result) {
         //     if (err)
         //         console.log(err);
@@ -294,16 +299,15 @@ async function main() {
         //     }
         // });
 
-        // let sql = `SELECT s.title AS subject_title,
-        //             COUNT(ss.student_id) AS total_students,
-        //             t.first_name AS teacher_first_name,
-        //             t.last_name AS teacher_last_name
-        //             FROM subjects AS s
-        //             JOIN subject_teacher AS st  ON s.subject_id = st.subject_id
-        //             JOIN teachers AS t ON st.teacher_id = t.teacher_id
-        //             LEFT JOIN marks AS m ON s.subject_id = m.subject_id
-        //             LEFT JOIN students AS ss ON m.student_id = ss.student_id
-        //             GROUP BY s.subject_id, t.teacher_id;`;
+        // let sql = `SELECT sb.title AS subject_title, t.first_name AS teacher_first_name,
+        //             t.last_name AS teacher_last_name,
+        //             COUNT(*) AS num_students
+        //             FROM students AS s
+        //             JOIN \`groups\` AS g ON (s.group_id = g.group_id)
+        //             JOIN subject_teacher AS st ON (g.group_id = st.group_id)
+        //             JOIN subjects AS sb ON (st.subject_id = sb.subject_id)
+        //             JOIN teachers AS t ON (st.teacher_id = t.teacher_id)
+        //             GROUP BY sb.title, st.teacher_id`;
         // conn.query(sql, function (err, result) {
         //     if (err)
         //         console.log(err);
