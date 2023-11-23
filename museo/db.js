@@ -16,15 +16,13 @@ async function main() {
         // la información básica (nombre, apellidos y email) de la persona que los 
         // ha prestado.
 
-        // let params = ["2"];
-        // let sql = `SELECT id_pieza, nombre_pieza, nombre_localizacion, fecha_devolucion, nombre_duenyo, 
+        // let params = ["prestamo"];
+        // let sql = `SELECT id_pieza, nombre_pieza, localizacion, fecha_devolucion, nombre_duenyo, 
         //             apellido_duenyo, email_duenyo
         //             FROM piezas AS p
-        //             JOIN colecciones AS c ON (p.id_coleccion = c.id_coleccion)
-        //             JOIN localizacion_coleccion AS lc ON (c.id_localizacion_coleccion = lc.id_localizacion)
         //             JOIN datos_prestacion AS dp ON (p.id_datos_prestacion = dp.id_datos_prestacion)
-        //             JOIN duenyo AS d ON (dp.id_duenyo = d.id_duenyo)
-        //             WHERE id_estado = ?`;
+        //             JOIN duenyo AS d ON (p.id_duenyo = d.id_duenyo)
+        //             WHERE estado = ?`;
         // conn.query(sql, params, function (err, result) {
         //     if (err)
         //         console.log(err);
@@ -38,11 +36,9 @@ async function main() {
         // agrupados por su situación dentro de la organización, esto es, cuántos hay expuestos, 
         // cuántos en itinerancia y cuántos almacenados.
 
-        // let sql = `SELECT nombre_formato AS situación, COUNT(id_pieza) AS num_piezas
+        // let sql = `SELECT formato AS situación, COUNT(id_pieza) AS num_piezas
         //             FROM piezas AS p
-        //             JOIN colecciones AS c ON (p.id_coleccion = c.id_coleccion)
-        //             JOIN formato_coleccion AS fc ON (c.id_formato_coleccion = fc.id_formato)
-        //             GROUP BY nombre_formato
+        //             GROUP BY formato
         //             ORDER BY num_piezas DESC`;
         // conn.query(sql, function (err, result) {
         //     if (err)
