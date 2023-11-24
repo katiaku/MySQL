@@ -35,10 +35,10 @@ async function main() {
         // agrupados por su situación dentro de la organización, esto es, cuántos hay expuestos, 
         // cuántos en itinerancia y cuántos almacenados.
 
-        let sql = `SELECT formato AS situación, COUNT(id_pieza) AS num_piezas
-                    FROM piezas AS p
-                    GROUP BY formato
-                    ORDER BY num_piezas DESC`;
+        // let sql = `SELECT formato AS situación, COUNT(id_pieza) AS num_piezas
+        //             FROM piezas AS p
+        //             GROUP BY formato
+        //             ORDER BY num_piezas DESC`;
         // conn.query(sql, function (err, result) {
         //     if (err)
         //         console.log(err);
@@ -47,10 +47,6 @@ async function main() {
         //         console.log(result);
         //     }   
         // });
-
-        let [result] = await conn.query(sql);
-        console.log("Dato actualizado");
-        console.log(result);
 
     } catch (err) {
         console.log(err);
